@@ -4,10 +4,12 @@ import { currentGET, GETNOBASE } from "@/api";
 import { registerMap, getMap } from "echarts/core";
 import { optionHandle, regionCodes } from "./center.map";
 import BorderBox13 from "@/components/datav/border-box-13";
+import selector from "@/components/selector";
 import type { MapdataType } from "./center.map";
 import { valid } from "mockjs";
 const option = ref({});
 const code = ref<string>("310000"); //china 代表中国 其他地市是行政编码
+const type = ref('option1');
 
 withDefaults(
   defineProps<{
@@ -42,8 +44,8 @@ const dataSetHandle = async (regionCode: string, list: object[]) => {
   option.value = optionHandle(regionCode, list, mapData);
 };
 
-const getData = async (regionCode: string) => {
-  currentGET("centerMap", { regionCode: regionCode }).then((res) => {
+const getData = async (regionCode: string, type: any) => {
+  currentGET("centerMap", { regionCode: regionCode,type:type }).then((res) => {
     console.log("各省分布", res);
     if (res.success) {
       dataSetHandle(res.data.regionCode, res.data.dataList);
@@ -70,17 +72,24 @@ const getGeojson = (regionCode: string) => {
     }
   });
 };
-getData(code.value);
+getData(code.value,type.value);
 
 const mapClick = (params: any) => {
   console.log(params);
   let xzqData = regionCodes[params.name];
   if (xzqData) {
-    getData(xzqData.adcode);
+    getData(xzqData.adcode,type.value);
   } else {
     window["$message"].warning("暂无下级地市");
   }
 };
+
+const setType = (value:any) => {
+  console.log(value);
+  type.value = value;
+  getData(code.value,type.value);
+};
+
 </script>
 
 <template>
@@ -92,7 +101,9 @@ const mapClick = (params: any) => {
     </div>
     <div class="mapwrap">
       <BorderBox13>
-        <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
+        
+        <selector @changeOption="setType"  />
+        <div class="quanguo" @click="getData('china',type)" v-if="code !== 'china'">
           上一级
         </div>
         <v-chart
@@ -157,7 +168,8 @@ const mapClick = (params: any) => {
     box-sizing: border-box;
     position: relative;
 
-    .quanguo {
+
+.quanguo {
       position: absolute;
       right: 20px;
         top: 25px;

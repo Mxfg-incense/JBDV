@@ -157,11 +157,17 @@ export default [
   {
     url: "/bigscreen/installationPlan",
     type: "get",
-    response: () => {
-      return {
+    response: (options:any ) => {
+      let params = parameteUrl(options.url);
+      type ObjectKey = keyof typeof genderData;
+      const Type = params.type as ObjectKey;
+      console.log("Type",Type);
+      const a = {
         success: true,
-        data: genderData,
-      };
+        data: genderData[Type],
+      }
+      console.log(a);
+        return a;
     },
   },
   {
@@ -171,21 +177,26 @@ export default [
     type: "get",
     response: (options: any) => {
       let params = parameteUrl(options.url);
+
       //不是中国的时候
       if (params.regionCode && !["china"].includes(params.regionCode)) {
-        const a = Mock.mock({
+        type ObjectKey = keyof typeof cityData;
+        const Type = params.type as ObjectKey;
+        const a = {
           success: true,
           data: {
-            dataList: cityData,
+            dataList: cityData[Type],
             regionCode: params.regionCode, //-代表中国
           },
-        });
+        };
         return a;
       } else {
+        type ObjectKey = keyof typeof chinaData;
+        const Type = params.type as ObjectKey;
         const Data = {
           success: true,
           data: {
-            dataList: chinaData,
+            dataList: chinaData[Type],
             regionCode: "china", //-代表中国
           },
         };

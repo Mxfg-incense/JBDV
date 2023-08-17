@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, nextTick } from "vue";
+import Selector from "@/components/selector";
 import { currentGET } from "@/api";
 import {graphic} from "echarts/core"
 const option = ref({});
-const getData = () => {
-  currentGET("centerBottom", {}).then((res) => {
+const type = ref('option1');
+const getData = (type:any) => {
+  currentGET("centerBottom", {type:type}).then((res) => {
     console.log("性别组成", res);
     if (res.success) {
       setOption(res.data);
@@ -151,14 +153,24 @@ const setOption =async (newData: any) => {
     ],
   };
 };
+const setType = (value:any) => {
+  console.log(value);
+  type.value = value;
+  getData(type.value);
+};
 onMounted(()=>{
-getData();
+getData(type.value);
 
 })
 </script>
 
 <template>
-  <v-chart class="chart" :option="option" v-if="JSON.stringify(option)!='{}'"/>
+  <div style="position: absolute; top:-10px; left:100px;">
+    <Selector @changeOption="setType" />
+  </div>
+  <v-chart  class="chart" :option="option" v-if="JSON.stringify(option)!='{}'"/>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>
