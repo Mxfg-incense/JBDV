@@ -8,7 +8,7 @@
 
 演示视频位于项目 `/Media.mp4`
 
-![image-20230818011017453](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20230818011017453.png)
+![项目展示](https://cdn.jsdelivr.net/gh/mxfg-incense/picture@main/test/202308180122833.png)
 
 ### 项目预览地址
 
