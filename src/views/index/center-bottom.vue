@@ -57,7 +57,7 @@ const setOption =async (newData: any) => {
     legend: {
       data: ["男性", "女性", "男女比"],
       textStyle: {
-        color: "#B4B4B4",
+        color: "#2b2b2b",
       },
       top: "0",
     },
@@ -71,7 +71,7 @@ const setOption =async (newData: any) => {
       data: newData.Date,
       axisLine: {
         lineStyle: {
-          color: "#B4B4B4",
+          color: "#2b2b2b",
         },
       },
       axisTick: {
@@ -83,7 +83,7 @@ const setOption =async (newData: any) => {
         splitLine: { show: false },
         axisLine: {
           lineStyle: {
-            color: "#B4B4B4",
+            color: "#2b2b2b",
           },
         },
 
@@ -95,7 +95,7 @@ const setOption =async (newData: any) => {
         splitLine: { show: false },
         axisLine: {
           lineStyle: {
-            color: "#B4B4B4",
+            color: "#2b2b2b",
           },
         },
         axisLabel: {
