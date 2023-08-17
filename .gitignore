@@ -12,8 +12,11 @@ node_modules
 coverage
 *.local
 
+
+/Rawdata/
 /cypress/videos/
 /cypress/screenshots/
+/asserts/Data/
 
 components.d.ts
 # Editor directories and files

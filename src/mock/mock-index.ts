@@ -1,6 +1,10 @@
 import Mock from "mockjs";
+import chinaData from '@/assets/Data/china.json'
+import cityData from '@/assets/Data/city.json'
+
 //处理路径传参
 import { parameteUrl } from "@/utils/query-param"
+import { mock } from "node:test";
 
 function ArrSet(Arr: any[], id: string): any[] {
     let obj: any = {}
@@ -193,7 +197,8 @@ export default [
             }
         }
     },
-    {
+    {// 各省分布图
+        
         url: "/bigscreen/centerMap",
         type: "get",
         response: (options: any) => {
@@ -203,32 +208,25 @@ export default [
                 const a = Mock.mock({
                     success: true,
                     data: {
-                        "dataList|100": [
-                            {
-                                name: "@city()",
-                                value: '@integer(1, 1000)'
-                            }
-                        ],
+                        "dataList": cityData,
                         regionCode: params.regionCode,//-代表中国
                     }
                 })
                 return a
             } else {
-                const a = Mock.mock({
+               
+                const mockData = {
                     success: true,
                     data: {
-                        "dataList|12": [
-                            {
-                                name: "@province()",
-                                value: '@integer(1, 1100)'
-                            }
-                        ],
-                        regionCode: 'china',
+                        dataList : chinaData,
+                        regionCode: 'china',//-代表中国
+
                     }
-                })
-                // 去重
-                a.data.dataList = ArrSet(a.data.dataList, "name")
-                return a
+                };
+
+              //  console.log("mockData",mockData);
+                return Mock.mock(mockData);
+
             }
         }
     }
