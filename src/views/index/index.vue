@@ -81,8 +81,10 @@ import RightBottom from "./right-bottom.vue";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
   .contetn_center-bottom {
-    height: 315px;
+    height: 350px;
+    top: -20px;
   }
 }
 

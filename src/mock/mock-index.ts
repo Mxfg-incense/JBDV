@@ -108,12 +108,7 @@ export default [
       //   console.log("ranking",num);
       let newNum: any = [],
         numObj: any = {};
-      num.map((item: any) => {
-        if (!numObj[item.name] && newNum.length < 8) {
-          numObj[item.name] = true;
-          newNum.push(item);
-        }
-      });
+
       let arr = newNum.sort((a: any, b: any) => {
         return b.value - a.value;
       });

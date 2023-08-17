@@ -101,12 +101,14 @@ const setType = (value:any) => {
     </div>
     <div class="mapwrap">
       <BorderBox13>
-        
-        <selector @changeOption="setType"  />
+        <div style="position: relative; top:-20px; left:100px;">
+          <selector @changeOption="setType" style="" />
+        </div>
         <div class="quanguo" @click="getData('china',type)" v-if="code !== 'china'">
           上一级
         </div>
         <v-chart
+        style="position: relative; top:-25px; left:0px;"
           class="chart"
           :option="option"
           ref="centerMapRef"

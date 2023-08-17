@@ -165,10 +165,10 @@ getData(type.value);
 </script>
 
 <template>
-  <div style="position: absolute; top:-10px; left:100px;">
+  <div style="position: relative; top:-35px; left:80px;">
     <Selector @changeOption="setType" />
   </div>
-  <v-chart  class="chart" :option="option" v-if="JSON.stringify(option)!='{}'"/>
+  <v-chart  style="position: relative; top:-20px; left:0px;" class="chart" :option="option" v-if="JSON.stringify(option)!='{}'"/>
 </template>
 
 <style scoped lang="scss">

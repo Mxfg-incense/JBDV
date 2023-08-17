@@ -3,12 +3,13 @@ import { ref, onMounted } from "vue";
 import { currentGET } from "@/api";
 import { graphic, format } from "echarts/core";
 import { UniversalTransition } from 'echarts/features';
+import { DEFAULT_DYNAMIC_LIST_ITEM_SIZE } from "element-plus/es/components/virtual-list/src/defaults";
 const option = ref({});
 const getData = () => {
   currentGET("rightTop", {}).then((res) => {
     console.log("增长趋势 ", res);
     if (res.success) {
-      setOption(res.data.Date, res.data.data1, res.data.data2);
+      setOption(res.data);
     } else {
       window["$message"]({
         text: res.msg,
@@ -17,7 +18,7 @@ const getData = () => {
     }
   });
 };
-const setOption = async (Date: any[], yData: any[], yData2: any[]) => {
+const setOption = async (data:any) => {
   option.value = {
     tooltip: {
     position: function (pt:any) {
@@ -26,7 +27,7 @@ const setOption = async (Date: any[], yData: any[], yData2: any[]) => {
   },
     xAxis: {
       type: 'category',
-      data: Date,
+      data: data.Date,
       boundaryGap: false, // 不留白，从原点开始
       axisLine: {
         // show:false,
@@ -90,11 +91,11 @@ const setOption = async (Date: any[], yData: any[], yData2: any[]) => {
 
     series: [
       {
-        data: yData,
+        data: data.data1,
         type: "line",
         smooth: true,
         //symbol: "none", //去除点
-        name: "危险驾驶",
+        name: "信息诈骗",
         color: "rgba(252,144,16,.7)",
         areaStyle: {
           //右，下，左，上
@@ -118,11 +119,11 @@ const setOption = async (Date: any[], yData: any[], yData2: any[]) => {
         },
       },
       {
-        data: yData2,
+        data: data.data2,
         type: "line",
         smooth: true,
         //symbol: "none", //去除点
-        name: "信息诈骗",
+        name: "危险驾驶",
         color: "rgba(9,202,243,.7)",
         areaStyle: {
           //右，下，左，上
@@ -139,6 +140,34 @@ const setOption = async (Date: any[], yData: any[], yData2: any[]) => {
               {
                 offset: 1,
                 color: "rgba(9,202,243,.0)",
+              },
+            ],
+            false
+          ),
+        },
+      },
+      {
+        data: data.data3,
+        type: "line",
+        smooth: true,
+        //symbol: "none", //去除点
+        name: "寻衅滋事",
+        color: "rgba(238,63,77,.7)",
+        areaStyle: {
+          //右，下，左，上
+          color: new graphic.LinearGradient(
+            0,
+            0,
+            0,
+            1,
+            [
+              {
+                offset: 0,
+                color: "rgba(238,63,77,.7)",
+              },
+              {
+                offset: 1,
+                color: "rgba(238,63,77,0)",
               },
             ],
             false

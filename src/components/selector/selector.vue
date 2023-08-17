@@ -14,9 +14,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    <p style="color: black;">案件类型</p>
-  </div>
+
   <select v-model="selectedOption" @change="$emit('changeOption', selectedOption)">
     
     <option v-for="option in options" :value="option.value" :key="option.value">
@@ -34,6 +32,7 @@ select{
   height: 30px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  background-color: antiquewhite;
   outline: none;
   padding: 0 5px;
   font-size: 14px;
