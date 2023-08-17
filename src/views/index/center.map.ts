@@ -39,7 +39,7 @@ export const optionHandle = (regionCode: string,
                 // FFFFFF,EDF7FD,DBF0FA,C9E8F8,B7E1F6,A5D9F3,93D2F1,81CAEF,6FC2EC,5DBBEA,4AB3E8,38ACE5,26A4E3,1C9AD9,1A8DC7,
                 // 1781B5,
                 // 1573A2,136790,105A7E,0E4D6C,0C405A,093348,072636,051A24,020D12
-                color: ['#f8d86a','#f86b1d','#f23e23']
+                color: ['lightblue','yellow','#f23e23']
             },
             textStyle: {
                 color: "#5e616d",

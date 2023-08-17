@@ -1,2 +1,2 @@
-import Selector from './Selector.vue';
+import Selector from "./selector.vue";
 export default Selector;

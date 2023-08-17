@@ -2,51 +2,17 @@
 
 基于项目 [IofTV-Screen](https://gitee.com/daidaibg/IofTV-Screen/tree/main) ， 对裁判文书的大数据进行展示。
 
-### 与vue2版本对比
+本 [项目地址](https://github.com/Mxfg-incense/JBDV)
 
-#### 功能
+## **项目展示**
 
-功能采用与vue2版本相同功能
+演示视频位于项目 `/Media.mp4`
 
-因为要与vue2版本相同功能，有些组件不兼容vue3版本，例如：胶囊柱图，数字滚动皆重新封装为组件，整体来说，功能属实相同。根据自己需求选择[vue2](#vue2版本地址)版本与[vue3](#本项目地址 vue3+vite)版本
-
-#### 样式
-
-进行微调，整体看着更加美观
-
-- 项目需要全屏展示（按 F11）。
-- 项目部分区域使用了全局注册方式，增加了打包体积，在实际运用中请使用 **按需引入**。
-- 项目环境：Vite、Echarts、Npm、Node，axios,mock,vue3。
-- 请拉取 master 分支的代码，其余分支是开发分支。
-- 在项目public目录下存放地图数据合集，根据地市编存放。
-
-友情链接：
-
-1. [Vue 官方文档](https://cn.vuejs.org/)
-2. [echarts 实例](https://gitee.com/link?target=https%3A%2F%2Fecharts.apache.org%2Fexamples%2Fzh%2Findex.html)，[echarts API 文档](https://gitee.com/link?target=https%3A%2F%2Fecharts.apache.org%2Fzh%2Fapi.html%23echarts)
-3. [mock.js官网](http://mockjs.com/examples.html)
-4. [axios官网](https://axios-http.com/)
-
-**项目展示**
-
-![image-20230817132204099](https://cdn.jsdelivr.net/gh/mxfg-incense/picture@main/test/202308171322032.png)
+![image-20230818011017453](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20230818011017453.png)
 
 ### 项目预览地址
 
-
-### 采用自适应组件方式
-
-
-### 滚动设置，自适应设置
-
-项目中可以进行滚动配置，内容是否滚动
-
-点击右上角设置按钮
-![设置](https://www.daidaibg.com/bigscreen/a-img/setting.png)
-
-可以进行以下配置，可以自行代码中进行修改或增加配置
-
-![在这里插入图片描述](https://www.daidaibg.com/bigscreen/a-img/setting2.png)
+[Mxfg-incense/JBDV (github.com)](https://mxfg-incense.github.io/JBDV-dis/)
 
 ## 2、主要文件介绍
 

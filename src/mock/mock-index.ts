@@ -102,22 +102,26 @@ export default [
   //右中
   {
     url: "/bigscreen/ranking",
-    type: "get",
-    response: () => {
-      let num = cityData;
-      //   console.log("ranking",num);
-      let newNum: any = [],
-        numObj: any = {};
-
-      let arr = newNum.sort((a: any, b: any) => {
-        return b.value - a.value;
-      });
-      let a = {
-        success: true,
-        data: arr,
-      };
-      return a;
-    },
+        type: "get",
+        response: () => {
+            let num = Mock.mock({ "list|80": [{ value: "@integer(50,1000)", name: "@city()" }] }).list
+            //   console.log("ranking",num);
+            let newNum: any = [], numObj: any = {}
+            num.map((item: any) => {
+                if (!numObj[item.name] && newNum.length < 8) {
+                    numObj[item.name] = true
+                    newNum.push(item)
+                }
+            })
+            let arr = newNum.sort((a: any, b: any) => {
+                return b.value - a.value
+            })
+            let a = {
+                success: true,
+                data: arr
+            }
+            return a
+        }
   },
   //右下
   {
@@ -167,38 +171,42 @@ export default [
   },
   {
     // 各省分布图
-
     url: "/bigscreen/centerMap",
     type: "get",
     response: (options: any) => {
-      let params = parameteUrl(options.url);
-
-      //不是中国的时候
-      if (params.regionCode && !["china"].includes(params.regionCode)) {
-        type ObjectKey = keyof typeof cityData;
-        const Type = params.type as ObjectKey;
-        const a = {
-          success: true,
-          data: {
-            dataList: cityData[Type],
-            regionCode: params.regionCode, //-代表中国
-          },
-        };
-        return a;
-      } else {
-        type ObjectKey = keyof typeof chinaData;
-        const Type = params.type as ObjectKey;
-        const Data = {
-          success: true,
-          data: {
-            dataList: chinaData[Type],
-            regionCode: "china", //-代表中国
-          },
-        };
-
-        //  console.log("mockData",mockData);
-        return Data;
-      }
-    },
+        let params = parameteUrl(options.url)
+        //不是中国的时候
+        if (params.regionCode && !["china"].includes(params.regionCode)) {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    "dataList|100": [
+                        {
+                            name: "@city()",
+                            value: '@integer(1, 400)'
+                        }
+                    ],
+                    regionCode: params.regionCode,//-代表中国
+                }
+            })
+            return a
+        } else {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    "dataList|120": [
+                        {
+                            name: "@province()",
+                            value: '@integer(1, 700)'
+                        }
+                    ],
+                    regionCode: 'china',
+                }
+            })
+            // 去重
+            a.data.dataList = ArrSet(a.data.dataList, "name")
+            return a
+        }
+    }
   },
 ];
