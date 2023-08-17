@@ -128,7 +128,7 @@ onMounted(() => {
         padding-right: 10px;
         text-align: right;
         font-size: 12px;
-
+        color: #2b2b2b;
         div {
             height: 20px;
             line-height: 20px;
@@ -159,8 +159,9 @@ onMounted(() => {
             align-items: center;
 
             .capsule-item-value {
-                font-size: 12px;
+                font-size: 8px;
                 transform: translateX(100%);
+                color: #2b2b2b;
             }
         }
     }
@@ -172,6 +173,7 @@ onMounted(() => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: #2b2b2b;
     }
 
     .unit-text {
@@ -181,6 +183,8 @@ onMounted(() => {
         font-size: 12px;
         line-height: 20px;
         margin-left: 10px;
+        color: #2b2b2b;
+        
     }
 }
 </style>

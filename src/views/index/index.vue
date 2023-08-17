@@ -33,7 +33,7 @@ import RightBottom from "./right-bottom.vue";
     </div>
     <div class="contetn_center">
       <CenterMap class="contetn_center_top" title="各省分布图" />
-      <ItemWrap class="contetn_center-bottom" title="安装计划">
+      <ItemWrap class="contetn_center-bottom" title="性别组成">
         <CenterBottom />
       </ItemWrap>
     </div>
@@ -43,8 +43,8 @@ import RightBottom from "./right-bottom.vue";
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
-        title="报警排名(TOP8)"
-        style="padding: 0 10px 16px 10px"
+        title="案件数量排名"
+        style="padding: 0 10px 120px 10px"
       >
         <RightCenter />
       </ItemWrap>

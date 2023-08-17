@@ -1,6 +1,8 @@
 import Mock from "mockjs";
 import chinaData from '@/assets/Data/china.json'
 import cityData from '@/assets/Data/city.json'
+import genderData from '@/assets/Data/gender.json'
+import totalData from '@/assets/Data/total.json'
 
 //处理路径传参
 import { parameteUrl } from "@/utils/query-param"
@@ -91,29 +93,14 @@ export default [
         url: "/bigscreen/alarmNum",
         type: "get",
         response: () => {
-            let base = +new Date(2021, 9, 3);
-            let oneDay = 24 * 3600 * 1000;
-            let valueBase = Math.random() * 300;
-            let valueBase2 = Math.random() * 50;
-            let data = [];
-            let data2 = [];
-            for (var i = 1; i < 20; i++) {
-                var now = new Date((base += oneDay));
-                var dayStr = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
-              console.log(dayStr);
-                valueBase = Math.round((Math.random() - 0.5) * 20 + valueBase);
-                valueBase <= 0 && (valueBase = Math.random() * 300);
-                data.push([dayStr, valueBase]);
-              
-                valueBase2 = Math.round((Math.random() - 0.5) * 20 + valueBase2);
-                valueBase2 <= 0 && (valueBase2 = Math.random() * 50);
-                data2.push([dayStr, valueBase2]);
-              }
+
             const a = Mock.mock({
                 success: true,
                 data: {
-                    data1: data,
-                    data2: data2,
+                    data1: totalData.data1,
+                    data2: totalData.data2,
+                    data3: totalData.data3,
+                   
                 }
             })
             return a
@@ -124,7 +111,7 @@ export default [
         url: "/bigscreen/ranking",
         type: "get",
         response: () => {
-            let num = Mock.mock({ "list|80": [{ value: "@integer(50,1000)", name: "@city()" }] }).list
+            let num = cityData
             //   console.log("ranking",num);
             let newNum: any = [], numObj: any = {}
             num.map((item: any) => {
@@ -177,23 +164,10 @@ export default [
         type: "get",
         response: () => {
 
-            let num = RandomNumBoth(26, 32);
-            const a = Mock.mock({
-                ["category|" + num]: ["@city()"],
-                ["barData|" + num]: ["@integer(10, 100)"],
-            })
-            let lineData = [], rateData = [];
-            for (let index = 0; index < num; index++) {
-                let lineNum = Mock.mock('@integer(0, 100)') + a.barData[index]
-                lineData.push(lineNum)
-                let rate = a.barData[index] / lineNum;
-                rateData.push((rate * 100).toFixed(0))
-            }
-            a.lineData = lineData
-            a.rateData = rateData
+
             return {
                 success: true,
-                data: a
+                data: genderData
             }
         }
     },
@@ -215,7 +189,7 @@ export default [
                 return a
             } else {
                
-                const mockData = {
+                const Data = {
                     success: true,
                     data: {
                         dataList : chinaData,
@@ -225,7 +199,7 @@ export default [
                 };
 
               //  console.log("mockData",mockData);
-                return Mock.mock(mockData);
+                return Data;
 
             }
         }

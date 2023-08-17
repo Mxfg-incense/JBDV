@@ -36,7 +36,7 @@ timeFn()
       {{ dateData.dateYear }} {{ dateData.dateWeek }} {{ dateData.dateDay }}
 
       <div class="setting_icon"   @click="setSettingShow(true)">
-          <img src="@/assets/img/headers/setting.png" alt="设置">
+          <img src="@/assets/img/headers/settings-512.webp" alt="设置">
       </div>
     </div>
   </div>
@@ -83,6 +83,7 @@ timeFn()
     right: 0;
     top: 30px;
     font-size: 18px;
+    color: #2b2b2b;
     display: flex;
     align-items: center;
 
@@ -95,6 +96,7 @@ timeFn()
         width: 100%;
         height: 100%;
       }
+      color: #2b2b2b;
     }
   }
 }

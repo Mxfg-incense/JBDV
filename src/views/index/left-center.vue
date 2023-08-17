@@ -41,14 +41,14 @@ const setOption = () => {
       textStyle: {
         rich: {
           value: {
-            color: "#ffffff",
+            color: "#2b2b2b",
             fontSize: 24,
             fontWeight: "bold",
             lineHeight: 20,
             padding:[4,0,4,0]
           },
           name: {
-            color: "#ffffff",
+            color: "#2b2b2b",
             lineHeight: 20,
           },
         },
@@ -85,11 +85,11 @@ const setOption = () => {
               lineHeight: 26,
             },
             c: {
-              color: "#525288",
+              color: "#2b2b2b",
               fontSize: 14,
             },
             per: {
-              color: "#525288",
+              color: "#2b2b2b",
               fontSize: 14,
             },
           },

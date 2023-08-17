@@ -5,7 +5,7 @@ import {graphic} from "echarts/core"
 const option = ref({});
 const getData = () => {
   currentGET("centerBottom", {}).then((res) => {
-    console.log("安装计划", res);
+    console.log("性别组成", res);
     if (res.success) {
       setOption(res.data);
     } else {
@@ -30,7 +30,7 @@ const setOption =async (newData: any) => {
         var result = params[0].name + "<br>";
         params.forEach(function (item: any) {
           if (item.value) {
-            if (item.seriesName == "安装率") {
+            if (item.seriesName == "男女比") {
               result +=
                 item.marker +
                 " " +
@@ -55,7 +55,7 @@ const setOption =async (newData: any) => {
       },
     },
     legend: {
-      data: ["已安装", "计划安装", "安装率"],
+      data: ["男性", "女性", "男女比"],
       textStyle: {
         color: "#B4B4B4",
       },
@@ -68,7 +68,7 @@ const setOption =async (newData: any) => {
       top: "20px",
     },
     xAxis: {
-      data: newData.category,
+      data: newData.Date,
       axisLine: {
         lineStyle: {
           color: "#B4B4B4",
@@ -105,20 +105,22 @@ const setOption =async (newData: any) => {
     ],
     series: [
       {
-        name: "已安装",
+        name: "男性",
         type: "bar",
         barWidth: 10,
         itemStyle: {
           borderRadius: 5,
           color: new graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: "#956FD4" },
-            { offset: 1, color: "#3EACE5" },
+            { offset: 0, color: "rgba(102,169,201,0.9)" },
+            { offset: 0.2, color: "rgba(102,169,201,0.4)" },
+            { offset: 1, color: "rgba(102,169,201,0.3)" },
           ]),
         },
-        data: newData.barData,
+    
+        data: newData.male,
       },
       {
-        name: "计划安装",
+        name: "女性",
         type: "bar",
         barGap: "-100%",
         barWidth: 10,
@@ -131,10 +133,10 @@ const setOption =async (newData: any) => {
           ]),
         },
         z: -12,
-        data: newData.lineData,
+        data: newData.female,
       },
       {
-        name: "安装率",
+        name: "男女比",
         type: "line",
         smooth: true,
         showAllSymbol: true,
@@ -142,7 +144,7 @@ const setOption =async (newData: any) => {
         symbolSize: 8,
         yAxisIndex: 1,
         itemStyle: {
-          color: "#F02FC2",
+          color: "#e77c8e",
         },
         data: newData.rateData,
       },
