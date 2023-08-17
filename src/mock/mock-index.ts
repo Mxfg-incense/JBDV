@@ -87,16 +87,29 @@ export default [
         url: "/bigscreen/alarmNum",
         type: "get",
         response: () => {
+            let base = +new Date(2021, 9, 3);
+            let oneDay = 24 * 3600 * 1000;
+            let valueBase = Math.random() * 300;
+            let valueBase2 = Math.random() * 50;
+            let data = [];
+            let data2 = [];
+            for (var i = 1; i < 20; i++) {
+                var now = new Date((base += oneDay));
+                var dayStr = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
+              console.log(dayStr);
+                valueBase = Math.round((Math.random() - 0.5) * 20 + valueBase);
+                valueBase <= 0 && (valueBase = Math.random() * 300);
+                data.push([dayStr, valueBase]);
+              
+                valueBase2 = Math.round((Math.random() - 0.5) * 20 + valueBase2);
+                valueBase2 <= 0 && (valueBase2 = Math.random() * 50);
+                data2.push([dayStr, valueBase2]);
+              }
             const a = Mock.mock({
                 success: true,
                 data: {
-                    dateList: ['2021-11', '2021-12', '2022-01', '2022-02', '2022-03', "2022-04"],
-                    "numList|6": [
-                        '@integer(0, 1000)'
-                    ],
-                    "numList2|6": [
-                        '@integer(0, 1000)'
-                    ]
+                    data1: data,
+                    data2: data2,
                 }
             })
             return a

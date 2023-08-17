@@ -3,7 +3,7 @@ import { ref, reactive } from "vue";
 import { graphic } from "echarts/core";
 import { currentGET } from "@/api";
 
-let colors = ["#0BFC7F", "#A0A0A0", "#F48C02", "#F4023C"];
+let colors = ["#248067", "##c4d7d6", "#F48C02", "#ef475d"];
 const option = ref({});
 const state = reactive({
   lockNum: 0,
@@ -57,20 +57,20 @@ const setOption = () => {
     tooltip: {
       trigger: "item",
       backgroundColor: "rgba(0,0,0,.6)",
-      borderColor: "rgba(147, 235, 248, .8)",
+      borderColor: "rgba(255, 255, 255, .8)",
       textStyle: {
         color: "#FFF",
       },
     },
     series: [
       {
-        name: "用户总览",
+        name: "肇事车辆",
         type: "pie",
-        radius: ["40%", "70%"],
+        radius: ["40%", "80%"],
         // avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 6,
-          borderColor: "rgba(255,255,255,0)",
+          borderColor: "rgba(255,255,255,.2)",
           borderWidth: 2,
         },
         color: colors,
@@ -80,16 +80,16 @@ const setOption = () => {
           //   position: "outside",
           rich: {
             b: {
-              color: "#fff",
+              color: "#2f2f35",
               fontSize: 12,
               lineHeight: 26,
             },
             c: {
-              color: "#31ABE3",
+              color: "#525288",
               fontSize: 14,
             },
             per: {
-              color: "#31ABE3",
+              color: "#525288",
               fontSize: 14,
             },
           },
@@ -112,30 +112,30 @@ const setOption = () => {
         data: [
           {
             value: state.onlineNum,
-            name: "在线",
+            name: "电动车",
             itemStyle: {
-              color: echartsGraphic(["#0BFC7F", "#A3FDE0"]),
+              color: echartsGraphic(["#248067", "#A3FDE0"]),
             },
           },
           {
             value: state.offlineNum,
-            name: "离线",
+            name: "货车",
             itemStyle: {
-              color: echartsGraphic(["#A0A0A0", "#DBDFDD"]),
+              color: echartsGraphic(["#c4d7d6", "#DBDFDD"]),
             },
           },
           {
             value: state.lockNum,
-            name: "锁定",
+            name: "小微型客车",
             itemStyle: {
               color: echartsGraphic(["#F48C02", "#FDDB7D"]),
             },
           },
           {
             value: state.alarmNum,
-            name: "异常",
+            name: "摩托车",
             itemStyle: {
-              color: echartsGraphic(["#F4023C", "#FB6CB7"]),
+              color: echartsGraphic(["#ef475d", "#FB6CB7"]),
             },
           },
         ],

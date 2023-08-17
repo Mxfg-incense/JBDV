@@ -20,7 +20,7 @@ const wrapperStyle = {};
     :delay="500"
     :fullScreen="false"
     :boxStyle="{
-      background: '#03050C',
+      background: '#eee8d8',
       overflow: isScale ? 'hidden' : 'auto',
     }"
     :wrapperStyle="wrapperStyle"
@@ -40,7 +40,7 @@ const wrapperStyle = {};
   height: 100%;
   padding: 16px 16px 16px 16px;
   box-sizing: border-box;
-  background-image: url("@/assets/img/pageBg.png");
+  //background-image: url("@/assets/img/pageBg.png");
   background-size: cover;
   background-position: center center;
 }

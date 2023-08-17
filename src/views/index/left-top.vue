@@ -2,6 +2,8 @@
 import { reactive, ref } from "vue";
 import { currentGET } from "@/api";
 import CountUp from "@/components/count-up";
+import GaugePanel from "@/components/gauge-panel";
+import { SetOperationEnum } from "element-plus/es/components/tree-v2/src/virtual-tree";
 const duration = ref(2);
 const state = reactive({
   alarmNum: 759,
@@ -9,7 +11,8 @@ const state = reactive({
   onlineNum: 654,
   totalNum: 698,
 });
-
+const colors1 = ref(["#55bb8a", "#F48C02", "#f5023d"]);
+const colors2 = ref(["#c6dfc8", "#f8df72", "#eea08c"])
 const getData = () => {
   currentGET("leftTop").then((res) => {
     console.log(res);
@@ -26,29 +29,23 @@ getData();
 
 <template>
   <ul class="user_Overview flex">
-    <li class="user_Overview-item" style="color: #00fdfa">
-      <div class="user_Overview_nums allnum">
-        <CountUp :endVal="state.totalNum" :duration="duration" />
+    <li class="user_Overview-item" style="color: #55bb8a">
+      <div class="user_Overview_nums">
+        <GaugePanel :color1= colors1[0] :color2=colors2[0] />
       </div>
-      <p>总设备数</p>
+      <p>免刑</p>
     </li>
-    <li class="user_Overview-item" style="color: #07f7a8">
-      <div class="user_Overview_nums online">
-        <CountUp :endVal="state.onlineNum" :duration="duration" />
+    <li class="user_Overview-item" style="color: #F48C02">
+      <div class="user_Overview_nums">
+        <GaugePanel :color1=colors1[1] :color2=colors2[1] />
       </div>
-      <p>在线数</p>
-    </li>
-    <li class="user_Overview-item" style="color: #e3b337">
-      <div class="user_Overview_nums offline">
-        <CountUp :endVal="state.offlineNum" :duration="duration" />
-      </div>
-      <p>掉线数</p>
+      <p>拘役</p>
     </li>
     <li class="user_Overview-item" style="color: #f5023d">
-      <div class="user_Overview_nums laramnum">
-        <CountUp :endVal="state.alarmNum" :duration="duration" />
+      <div class="user_Overview_nums">
+        <GaugePanel :color1=colors1[2] :color2=colors2[2] />
       </div>
-      <p>告警次数</p>
+      <p>有期徒刑</p>
     </li>
   </ul>
 </template>

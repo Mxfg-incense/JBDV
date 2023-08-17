@@ -5,7 +5,7 @@ import {
     CanvasRenderer
   } from 'echarts/renderers'
   import {
-    BarChart,PieChart,MapChart,EffectScatterChart,LineChart 
+    BarChart,PieChart,MapChart,EffectScatterChart,LineChart,GaugeChart, 
   } from 'echarts/charts'
   import {
     GridComponent,
@@ -15,12 +15,16 @@ import {
     DatasetComponent,
     VisualMapComponent,
     GeoComponent,
-    MarkPointComponent
+    MarkPointComponent,
+  DataZoomComponent,
+  PolarComponent,
+    DataZoomComponentOption
   } from 'echarts/components'
 
   use([
     CanvasRenderer,
-    BarChart,PieChart,MapChart,EffectScatterChart,LineChart,
+    BarChart, PieChart, MapChart, EffectScatterChart, LineChart,GaugeChart,
+    PolarComponent,
     GridComponent,
     LegendComponent,
     TooltipComponent,
@@ -28,7 +32,8 @@ import {
     DatasetComponent,
     VisualMapComponent,
     GeoComponent,
-    MarkPointComponent
+    MarkPointComponent,
+    DataZoomComponent
   ])
 
   export const registerEcharts= (app:any)=>{

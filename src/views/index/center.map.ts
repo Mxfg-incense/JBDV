@@ -19,39 +19,30 @@ export const optionHandle = (regionCode: string,
             show: false,
         },
         visualMap: {
-            seriesIndex:0,
-            left: 20,
-            bottom: 20,
-            pieces: [
-                { gte: 1000, label: "1000个以上" }, // 不指定 max，表示 max 为无限大（Infinity）。
-                { gte: 600, lte: 999, label: "600-999个" },
-                { gte: 200, lte: 599, label: "200-599个" },
-                { gte: 50, lte: 199, label: "49-199个" },
-                { gte: 10, lte: 49, label: "10-49个" },
-                { lte: 9, label: "1-9个" }, // 不指定 min，表示 min 为无限大（-Infinity）。
-            ],
+            left:20,
+            bottom:20,
+            min: 1,
+            max: 1000,
+            text: ['High', 'Low'],
+            realtime: false,
+            calculable: true,
+            // pieces: [
+            //     { gte: 1000, label: "1000个以上" }, // 不指定 max，表示 max 为无限大（Infinity）。
+            //     { gte: 600, lte: 999, label: "600-999个" },
+            //     { gte: 200, lte: 599, label: "200-599个" },
+            //     { gte: 50, lte: 199, label: "49-199个" },
+            //     { gte: 10, lte: 49, label: "10-49个" },
+            //     { lte: 9, label: "1-9个" }, // 不指定 min，表示 min 为无限大（-Infinity）。
+            // ],
             inRange: {
                 // 渐变颜色，从小到大
                 // FFFFFF,EDF7FD,DBF0FA,C9E8F8,B7E1F6,A5D9F3,93D2F1,81CAEF,6FC2EC,5DBBEA,4AB3E8,38ACE5,26A4E3,1C9AD9,1A8DC7,
                 // 1781B5,
                 // 1573A2,136790,105A7E,0E4D6C,0C405A,093348,072636,051A24,020D12
-                color: [
-                    // "#EDF7FD",
-                    "rgba(237,247,253,.8)",
-                    // "#B7E1F6",
-                    "rgba(183,225,246,.9)",
-                    // "#81CAEF",
-                    "rgba(129,202,239,.9)",
-                    // "#38ACE5",
-                    "rgba(56,172,229,.9)",
-                    // "#1781B5",
-                    "rgba(23,129,181,.9)",
-                    // "#105A7E",
-                    "rgba(16,90,126,0.9)"
-                ],
+                color: ['lightskyblue', 'yellow', 'orangered']
             },
             textStyle: {
-                color: "#fff",
+                color: "#5e616d",
             },
         },
         geo: {
@@ -84,11 +75,12 @@ export const optionHandle = (regionCode: string,
                             return params.name;
                         }
                     },
-                    backgroundColor: "rgba(0,0,0,.6)",
-                    borderColor: "rgba(147, 235, 248, .8)",
+                    backgroundColor: "rgba(0,0,0,.7)",
+                    borderColor: "rgba(255, 255, 255, .8)",
                     textStyle: {
-                        color: "#FFF",
+                        color: "#fff",
                     },
+                    
                 },
                 label: {
                     show: false,
@@ -118,11 +110,11 @@ export const optionHandle = (regionCode: string,
                             colorStops: [
                                 {
                                     offset: 0,
-                                    color: "rgba(147, 235, 248, 0)", // 0% 处的颜色
+                                    color: "rgba(150,120,40, 0)", // 0% 处的颜色
                                 },
                                 {
                                     offset: 1,
-                                    color: "rgba(56,155,183, .8)", // 100% 处的颜色
+                                    color: "rgba(150,120,40, .8)", // 100% 处的颜色
                                 },
                             ],
                             globalCoord: false, // 缺为 false
@@ -131,7 +123,7 @@ export const optionHandle = (regionCode: string,
                     },
                 },
                 itemStyle: {
-                    borderColor: "rgba(147, 235, 248, .8)",
+                    borderColor: "rgb(210, 117, 22, .8)",
                     borderWidth: 1,
                     areaColor: {
                         type: "radial",
@@ -141,16 +133,16 @@ export const optionHandle = (regionCode: string,
                         colorStops: [
                             {
                                 offset: 0,
-                                color: "rgba(147, 235, 248, 0)", // 0% 处的颜色
+                                color: "rgba(248, 216, 106, 0)", // 0% 处的颜色
                             },
                             {
                                 offset: 1,
-                                color: "rgba(147, 235, 248, .2)", // 100% 处的颜色
+                                color: "rgba(248, 216, 106, 0.4)", // 100% 处的颜色
                             },
                         ],
                         globalCoord: false, // 缺为 false
                     },
-                    shadowColor: "rgba(128, 217, 248, .3)",
+                    shadowColor: "rgba(254, 204, 17, .3)",
                     shadowOffsetX: -2,
                     shadowOffsetY: 2,
                     shadowBlur: 10,
@@ -182,9 +174,9 @@ export const optionHandle = (regionCode: string,
                         }
                     },
                     backgroundColor: "rgba(0,0,0,.6)",
-                    borderColor: "rgba(147, 235, 248, .8)",
+                    borderColor: "rgba(255, 255, 255, .8)",
                     textStyle: {
-                        color: "#FFF",
+                        color: "#fff",
                     },
                 },
                 label: {
@@ -217,6 +209,7 @@ export const optionHandle = (regionCode: string,
         // animationEasing: 'linear',
         // animationDurationUpdate: 1000
     };
+
 }
 
 

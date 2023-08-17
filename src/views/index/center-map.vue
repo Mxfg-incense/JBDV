@@ -5,8 +5,9 @@ import { registerMap, getMap } from "echarts/core";
 import { optionHandle, regionCodes } from "./center.map";
 import BorderBox13 from "@/components/datav/border-box-13";
 import type { MapdataType } from "./center.map";
+import { valid } from "mockjs";
 const option = ref({});
-const code = ref("china"); //china 代表中国 其他地市是行政编码
+const code = ref<string>("310000"); //china 代表中国 其他地市是行政编码
 
 withDefaults(
   defineProps<{
@@ -43,11 +44,12 @@ const dataSetHandle = async (regionCode: string, list: object[]) => {
 
 const getData = async (regionCode: string) => {
   currentGET("centerMap", { regionCode: regionCode }).then((res) => {
-    console.log("设备分布", res);
+    console.log("各省分布", res);
     if (res.success) {
       dataSetHandle(res.data.regionCode, res.data.dataList);
     }
   });
+  code.value = regionCode;
 };
 const getGeojson = (regionCode: string) => {
   return new Promise<boolean>(async (resolve) => {
@@ -91,7 +93,7 @@ const mapClick = (params: any) => {
     <div class="mapwrap">
       <BorderBox13>
         <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
-          中国
+          上一级
         </div>
         <v-chart
           class="chart"
@@ -158,19 +160,18 @@ const mapClick = (params: any) => {
     .quanguo {
       position: absolute;
       right: 20px;
-        top: -46px;
+        top: 25px;
       width: 80px;
       height: 28px;
-      border: 1px solid #00eded;
+      border: 1px solid #ffffff;
       border-radius: 10px;
-      color: #00f7f6;
+      color: #1a1a1a;
       text-align: center;
       line-height: 26px;
       letter-spacing: 6px;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0, 237, 237, 0.5),
-        0 0 6px rgba(0, 237, 237, 0.4);
       z-index: 10;
+      background-color: #ffefc0;
     }
   }
 }
